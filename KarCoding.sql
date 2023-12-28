@@ -2,10 +2,10 @@ create schema KarCoding;
 
 create table KarCoding.vehiculo(
 	matricula VARCHAR(10) primary key,
-	km int not null,
-	fecha_compra date not null,
 	id_modelo int not null,
-	id_color int not null
+	id_color int not null,
+	km int not null,
+	fecha_compra date not null
 );
 
 create table KarCoding.revision(
@@ -24,14 +24,14 @@ create table KarCoding.moneda(
 
 create table KarCoding.modelo(
 	id serial primary key,
-	id_marca int not null,
-	nombre varchar(80) not null
+	nombre varchar(80) not null,
+	id_marca int not null
 );
 
 create table KarCoding.marca(
 	id serial primary key,
-	id_grupo int not null,
-	nombre varchar(80) not null
+	nombre varchar(80) not null,
+	id_grupo int not null
 );
 
 create table KarCoding.grupo(
@@ -70,7 +70,7 @@ alter table KarCoding.vehiculo add constraint fk_vehiculo_color foreign key (id_
 alter table KarCoding.revision add constraint fk_revision_vehiculo foreign key (matricula) references KarCoding.vehiculo(matricula);
 alter table KarCoding.revision add constraint fk_revision_moneda foreign key (id_moneda) references KarCoding.moneda(id);
 
-CREATE TABLE KarCoding.tmp_coches (
+CREATE TABLE KarCoding.cochesKoding (
 	matricula varchar(50) NULL,
 	grupo varchar(50) NULL,
 	marca varchar(50) NULL,
@@ -78,11 +78,11 @@ CREATE TABLE KarCoding.tmp_coches (
 	fecha_compra date NULL,
 	color varchar(50) NULL,
 	aseguradora varchar(50) NULL,
-	n_poliza int4 NULL,
+	n_poliza int NULL,
 	fecha_alta_seguro date NULL,
-	importe_revision float4 NULL,
+	importe_revision float NULL,
 	moneda varchar(50) NULL,
-	kms_revision int4 NULL,
+	kms_revision int NULL,
 	fecha_revision date NULL,
-	kms_totales int4 NULL
+	kms_totales int NULL
 );
